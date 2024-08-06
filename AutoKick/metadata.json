@@ -1,0 +1,8 @@
+{
+    "name": "AutoKick",
+    "creator": "Kesler",
+    "description": "Automatically Kick Bad Party Members in Hypixel Skyblock Dungeons",
+    "requires": ["Vigilance", "requestV2"],
+    "version": "1.0.0",
+    "entry": "index.js"
+}
