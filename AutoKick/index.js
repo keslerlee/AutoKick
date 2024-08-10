@@ -70,6 +70,7 @@ function kickIfEligible(username, profile, dungeonClass) {
 
 function evaluateProfile(username, dungeonClass) {
     if (!Settings.autokick) return;
+    if (username == Player.getName()) return;
     if (cache.has(username)) {
         let date = new Date();
         if (date.getTime() - cache.get(username).last_updated < 180000) {
@@ -139,7 +140,7 @@ register("command", (arg) => {
                      "\n&a/ak help&f: Shows you this help message." +
                      "\n&a/ak on&f: Turns AutoKick &aon&f." +
                      "\n&a/ak off&f: Turns AutoKick &coff&f." +
-                     "\n&c[AutoKick] &fIssues" +
+                     "\n&c[AutoKick] &fNotes" +
                      "\n&fYour party will &cdisband &fif you &ckick &fwith only &ctwo &fpeople in the party." +
                      "\n&fThis mod is &cslower &fthan other mods because it checks the &centire profile&f." +
                      "\n&fThis mod &ccaches &fprofiles, meaning &crepeat &foffenders will be &cinstantly &fkicked." +
@@ -148,6 +149,5 @@ register("command", (arg) => {
 }).setName("autokick").setAliases("ak");
 
 register("command", (arg) => {
-    if (!Settings.developerMode) return;
     evaluateProfile(arg, "Tank");
 }).setName("kicktest");
